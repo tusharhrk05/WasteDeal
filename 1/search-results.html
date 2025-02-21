@@ -1,0 +1,49 @@
+
+    <h1>Welcome to WasteDeal!</h1>
+    <p>Here you can find your desired waste for your industry.</p>
+
+    <?php
+    if (isset($results) && count($results) > 0) {
+        echo "<h2>Results for Waste Type: $wasteType</h2>";
+        echo "<table>";
+        echo "<tr><th>Quantity</th><th>Location</th><th>Price</th><th>Contact</th></tr>";
+        foreach ($results as $row) {
+            echo "<tr>";
+            echo "<td>" . $row["quantity"] . " kg</td>";
+            echo "<td>" . $row["city"] . "</td>";
+            echo "<td>INR " . $row["price"] . " per kg</td>";
+            echo '<td><button onclick="payNow(\'' . $row["quantity"] . '\', \'' . $row["price"] . '\')">Buy Now</button></td>';
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>No results found for Waste Type: $wasteType</p>";
+    }
+    ?>
+
+    <script>
+    function payNow(quantity, price) {
+        var options = {
+            "key": "YOUR_KEY_ID", // Replace with your Razorpay key ID
+            "amount": price * 100, // Amount is in paise
+            "currency": "INR",
+            "name": "WasteDeal",
+            "description": "Purchase Waste",
+            "handler": function (response) {
+                // Handle successful payment here
+                alert("Payment Successful: " + response.razorpay_payment_id);
+                window.location.href = "payment_success.php?payment_id=" + response.razorpay_payment_id + "&quantity=" + quantity + "&price=" + price;
+            },
+            "prefill": {
+                "email": "customer@example.com",
+                "contact": "9876543210"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+    </script>
+
+    <a href="index.html" class="go-to-home-button">Go to Home</a>
+</body>
+</html>

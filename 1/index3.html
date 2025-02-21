@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Credit Calculator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1>Carbon Credit Calculator</h1>
+    </header>
+    <main>
+        <section id="pollution-selection">
+            <h2>Select Pollution Type</h2>
+            <select id="pollution-type">
+                <option value="dry">Dry Pollution</option>
+                <option value="plastics">Plastic Pollution</option>
+                <option value="chemical">Chemical Pollution</option>
+                <option value="paper">Paper Pollution</option>
+                <option value="other">Other (Not available)</option>
+            </select>
+        </section>
+        <section id="data-entry">
+            <h2>Enter Data (in tons)</h2>
+            <label for="amount">Amount (in tons):</label>
+            <input type="number" id="amount" required>
+            <button id="calculate">Calculate</button>
+        </section>
+        <section id="result">
+            <h2>Result</h2>
+            <p id="carbon"></p>
+        </section>
+        <img src="https://images.unsplash.com/photo-1563306406-c6935a0085ec" alt="Nature Image" class="animated-image">
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

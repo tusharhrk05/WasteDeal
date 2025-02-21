@@ -1,0 +1,1 @@
+# WasteDeal - Smart India Hackathon Project WasteDeal is an innovative waste management system designed to tackle the growing challenge of waste disposal in urban areas. Developed during the Smart …
